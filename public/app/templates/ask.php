@@ -58,8 +58,8 @@
 
       <form action="?page=ask" method="post">
         <div class="input-group">
-          <span class="input-group-addon" id="basic-addon1">question heading</span>
-          <input name="title" type="text" class="form-control" aria-describedby="basic-addon1">
+          <span class="input-group-addon" id="basic-addon1">title</span>
+          <input name="title" type="text" class="form-control" aria-describedby="basic-addon1" value="<?= isset($_POST['title']) ? $_POST['title'] : '' ?>">
         </div>
           <?php if( isset($titleMessage) ): ?>
             <p><span class="glyphicon glyphicon-info-sign"></span> <?= $titleMessage ?> </p>
@@ -67,7 +67,7 @@
 <br>
         <div class="input-group">
           <span class="input-group-addon" id="basic-addon1">description</span>
-          <textarea name="description" class="form-control" rows="10"></textarea>
+          <textarea name="description" class="form-control" rows="10" value="<?= isset($_POST['description']) ? $_POST['description'] : '' ?>"></textarea>
         </div>
           <?php if( isset($descriptionMessage) ): ?>
             <p><span class="glyphicon glyphicon-info-sign"></span> <?= $descriptionMessage ?> </p>

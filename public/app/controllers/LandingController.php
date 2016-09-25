@@ -14,10 +14,26 @@ class LandingController extends PageController{
   }
 
   public function buildHTML(){
-    //Replace templateName with name of file
+
+
+
      echo $this->plates->render('landing');
 
   }
+
+  // private function getQuestions(){
+  //
+  //   $sql = "SELECT question, date, owner_id FROM questions";
+  //     $result = $this->dbc->query($sql);
+  //     $questionsData = $result->fetch_assoc();
+  //     $id = $questionsData('owner_id');
+  //
+  //   $sql = "SELECT username FROM userData WHERE user_id = '$id' ";
+  //     $result = $this->dbc->query($sql);
+  //     $questionsData = $result->fetch_assoc();
+  //
+  //
+  // }
 
 
 

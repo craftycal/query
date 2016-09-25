@@ -40,10 +40,6 @@ class AskController extends PageController{
 
     $totalErrors = 0;
 
-    $title = $this->dbc->real_escape_string( $_POST['title'] );
-    $description = $this->dbc->real_escape_string( $_POST['description'] );
-
-
     if ( $_POST['title'] = '' ){
       $this->titleMessage = 'whats your question';
       $totalErrors ++;
@@ -59,6 +55,34 @@ class AskController extends PageController{
       $this->descriptionMessage = 'sorry you have exceeded the maximum charecters allowed: '.strlen($description).'/500';
       $totalErrors ++;
     }
+
+    // $title = $this->dbc->real_escape_string( $_POST['title'] );
+    // $description = $this->dbc->real_escape_string( $_POST['description'] );
+    //
+    // $sql = "SELECT title FROM questions WHERE '$title' = 	question";
+    // $result = $this->dbc->query($sql);
+    // $userData = $result->fetch_assoc();
+    //
+    // if( $result->num_rows > 0 ) {
+    //
+    //   if ($title == $userData['question']){
+    //     $this->titleMessage = 'sorry this question has already been asked';
+    //     $totalErrors++;
+    //   }
+    // }
+    //
+    // if ( $totalErrors == 0 ){
+    //
+    //     $sql = "INSERT INTO questions (question, description) VALUES ('$title', '$description'";
+    //
+    //     $result = $this->dbc->query($sql);
+    //
+    //     header('Location: ?page=landing');
+    // }
+
+
+
+
   }
 
 }
