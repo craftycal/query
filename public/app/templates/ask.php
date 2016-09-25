@@ -59,7 +59,7 @@
       <form action="?page=ask" method="post">
         <div class="input-group">
           <span class="input-group-addon" id="basic-addon1">title</span>
-          <input name="title" type="text" class="form-control" aria-describedby="basic-addon1" value="<?= isset($_POST['title']) ? $_POST['title'] : '' ?>">
+          <input name="title" type="text" class="form-control" aria-describedby="basic-addon1" value="<?= isset($_POST['title']) ? $_POST['title'] : ''; ?>">
         </div>
           <?php if( isset($titleMessage) ): ?>
             <p><span class="glyphicon glyphicon-info-sign"></span> <?= $titleMessage ?> </p>
@@ -67,17 +67,17 @@
 <br>
         <div class="input-group">
           <span class="input-group-addon" id="basic-addon1">description</span>
-          <textarea name="description" class="form-control" rows="10" value="<?= isset($_POST['description']) ? $_POST['description'] : '' ?>"></textarea>
+          <textarea name="description" class="form-control" rows="10"><?= isset($_POST['description']) ? $_POST['description'] : ''; ?></textarea>
         </div>
           <?php if( isset($descriptionMessage) ): ?>
             <p><span class="glyphicon glyphicon-info-sign"></span> <?= $descriptionMessage ?> </p>
           <?php endif ?>
 <br>
-        <div class="input-group">
+        <!-- <div class="input-group">
           <span class="input-group-addon" id="basic-addon1">tags</span>
           <input name="tags" type="text" value="" data-role="tagsinput" class="form-control" >
         </div>
-<br>
+<br> -->
         <div class="input-group">
           <input name="askForm" type="submit" value="submit" class="btn btn-default" aria-describedby="basic-addon1">
         </div>
