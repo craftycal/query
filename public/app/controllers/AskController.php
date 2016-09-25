@@ -3,6 +3,7 @@
 //Need to change ControllerName to the controllers name
 class AskController extends PageController{
 
+  private $logMessage;
   private $titleMessage;
   private $descriptionMessage;
 
@@ -23,6 +24,10 @@ class AskController extends PageController{
 
     $data = [];
 
+    if($this->logMessage != '') {
+      $data['logMessage'] = $this->logMessage;
+    }
+
     if($this->titleMessage != '') {
       $data['titleMessage'] = $this->titleMessage;
     }
@@ -37,6 +42,11 @@ class AskController extends PageController{
   private function proccessAskForm(){
 
     $totalErrors = 0;
+
+    if (!isset($_SESSION['username'])) {
+      $this->logMessage = 'you must be logged in to post';
+      $totalErrors++;
+    }
 
     if ( $_POST['title'] == '' ){
       $this->titleMessage = 'whats your question';
@@ -57,11 +67,11 @@ class AskController extends PageController{
     $title = $this->dbc->real_escape_string( $_POST['title'] );
     $description = $this->dbc->real_escape_string( $_POST['description'] );
 
-    $sql = "SELECT title FROM questions WHERE '$title' = 	question";
+    $sql = "SELECT title FROM questions WHERE '$title' = 	title";
     $result = $this->dbc->query($sql);
-    $questionData[] = $result->fetch_assoc();
+    $questionData = $result->fetch_assoc();
 
-    if( $result == false ) {
+    if( $result->num_rows > 0 ) {
 
       if ($title == $questionData['question']){
         $this->titleMessage = 'sorry this question has already been asked';
@@ -71,18 +81,11 @@ class AskController extends PageController{
 
     if ( $totalErrors == 0 ){
 
+        $sql = "INSERT INTO questions (title, description) VALUES ('$title', '$description'";
+        $result = $this->dbc->query($sql);
 
-        // $sql = "INSERT INTO questions (title, description) VALUES ('$title', '$description'";
-        //
-        // $result = $this->dbc->query($sql);
-        //
-        // header('Location: ?page=landing');
-
+        header('Location: ?page=landing');
     }
-
-
-
-
+    
   }
-
 }

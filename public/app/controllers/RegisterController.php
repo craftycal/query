@@ -100,7 +100,6 @@ class RegisterController extends PageController{
       $hash = password_hash( $_POST['password'], PASSWORD_BCRYPT );
 
       $sql = "INSERT INTO userData (username, email, password) VALUES ('$refineUsername', '$refineEmail', '$hash')";
-
       $result = $this->dbc->query($sql);
 
       header('Location: ?page=landing');

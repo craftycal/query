@@ -58,6 +58,7 @@
 
       <form action="?page=ask" method="post">
         <div class="input-group">
+
           <span class="input-group-addon" id="basic-addon1">title</span>
           <input name="title" type="text" class="form-control" aria-describedby="basic-addon1" value="<?= isset($_POST['title']) ? $_POST['title'] : ''; ?>">
         </div>
@@ -73,11 +74,10 @@
             <p><span class="glyphicon glyphicon-info-sign"></span> <?= $descriptionMessage ?> </p>
           <?php endif ?>
 <br>
-        <!-- <div class="input-group">
-          <span class="input-group-addon" id="basic-addon1">tags</span>
-          <input name="tags" type="text" value="" data-role="tagsinput" class="form-control" >
-        </div>
-<br> -->
+          <?php if( isset($logMessage) ): ?>
+            <p><span class="glyphicon glyphicon-info-sign"></span> <?= $logMessage ?> </p>
+          <?php endif ?>
+
         <div class="input-group">
           <input name="askForm" type="submit" value="submit" class="btn btn-default" aria-describedby="basic-addon1">
         </div>
