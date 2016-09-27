@@ -21,11 +21,9 @@ class LandingController extends PageController{
     // data as an array
 		$data = [];
 
-		$data = $questionsData;
+		$data['allQuestions'] = $questionsData;
 
-    print_r ($data);
-
-    echo $this->plates->render('landing');
+    echo $this->plates->render('landing', $data);
   }
 
   private function getQuestions(){
