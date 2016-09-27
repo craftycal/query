@@ -54,15 +54,15 @@
 
 
 <div class="container">
-
+ <?php foreach($allQuestions as $item): ?>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <a href="?page=question"><h3 class="panel-title">Panel title</h3></a>
+      <a href="?page=post&postid=<?= $item['id'] ?>"><h3 class="panel-title"><? echo ($item['title']) ?></h3></a>
     </div>
     <div class="panel-body">
-      <p class="pull-left">username</p>
-      <p class="pull-right">00/00/00</p>
+      <p class="pull-left"><? echo  ($item['owner_id']) ?></p>
+      <p class="pull-right"><? echo ($item['date']) ?></p>
     </div>
   </div>
-
+  <?php endforeach ?>
 </div>

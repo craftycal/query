@@ -43,8 +43,10 @@ class AskController extends PageController{
 
     $totalErrors = 0;
 
-    if (!isset($_SESSION['username'])) {
-      $this->logMessage = 'you must be logged in to post';
+    if (isset($_SESSION['id'])) {
+      $id = ($_SESSION['id']);
+    } else {
+      $this->logMessage = 'you must be logged in to make a post';
       $totalErrors++;
     }
 
@@ -73,7 +75,7 @@ class AskController extends PageController{
 
     if( $result->num_rows > 0 ) {
 
-      if ($title == $questionData['question']){
+      if ($title == $questionData['title']){
         $this->titleMessage = 'sorry this question has already been asked';
         $totalErrors++;
       }
@@ -81,11 +83,11 @@ class AskController extends PageController{
 
     if ( $totalErrors == 0 ){
 
-        $sql = "INSERT INTO questions (title, description) VALUES ('$title', '$description'";
-        $result = $this->dbc->query($sql);
+      $sql = "INSERT INTO questions (title, description, owner_id) VALUES ('$title', '$description', '$id')";
+      $result = $this->dbc->query($sql);
 
-        header('Location: ?page=landing');
+      header('Location: ?page=landing');
     }
-    
+
   }
 }

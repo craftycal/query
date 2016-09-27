@@ -63,7 +63,7 @@ class LoginController extends PageController{
     $username_found = false;
     $password_found = false;
 
-    $sql = "SELECT username, password, privilege FROM userData WHERE username = '$username' ";
+    $sql = "SELECT username, password, privilege, user_id FROM userData WHERE username = '$username' ";
       $result = $this->dbc->query($sql);
       $userData = $result->fetch_assoc();
 
@@ -84,6 +84,7 @@ class LoginController extends PageController{
     if ($password_found = true && $username_found = true ) {
 
       $_SESSION['username'] = $username;
+      $_SESSION['id'] = $userData['user_id'];
       $_SESSION['privilege'] = $userData['privilege'];
       header('Location: ?page=landing');
 

@@ -15,26 +15,28 @@ class LandingController extends PageController{
 
   public function buildHTML(){
 
+    // this = the result of the function
+    $questionsData = $this->getQuestions();
 
+    // data as an array
+		$data = [];
 
-     echo $this->plates->render('landing');
+		$data = $questionsData;
 
+    print_r ($data);
+
+    echo $this->plates->render('landing');
   }
 
-  // private function getQuestions(){
-  //
-  //   $sql = "SELECT question, date, owner_id FROM questions";
-  //     $result = $this->dbc->query($sql);
-  //     $questionsData = $result->fetch_assoc();
-  //     $id = $questionsData('owner_id');
-  //
-  //   $sql = "SELECT username FROM userData WHERE user_id = '$id' ";
-  //     $result = $this->dbc->query($sql);
-  //     $questionsData = $result->fetch_assoc();
-  //
-  //
-  // }
+  private function getQuestions(){
 
+    // get the questions
+    $sql = "SELECT question_id, title, date_, owner_id FROM questions";
+      // get the sql result
+      $result = mysqli_query($this->dbc, $sql);
+      // store result as an array
+      $questionsData = mysqli_fetch_assoc($result);
 
-
+    return $questionsData;
+  }
 }
