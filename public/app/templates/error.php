@@ -1,8 +1,7 @@
-
 <?php
   $this->layout('master', [
-    'title'=>'welcome to query',
-    'desc'=>'login or register to get started'
+    'title'=>'404',
+    'desc'=>'a problem occured'
   ]);
 ?>
 
@@ -27,7 +26,6 @@
         </div>
         <button type="submit" class="btn btn-default">search</button>
       </form>
-
       <ul class="nav navbar-nav navbar-right">
         <li><a href="?page=ask">ask <span class="glyphicon glyphicon-plus"></span></a></li>
 
@@ -46,24 +44,23 @@
         <?php } ?>
 
       </ul>
-
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 
-
 <div class="container">
-
- <?php foreach($allQuestions as $item): ?>
 
   <div class="panel panel-default">
     <div class="panel-heading">
-      <a href="index.php?page=question&question_id=<?= $item['question_id'] ?>"><h3 class="panel-title"><? echo ($item['title']) ?></h3></a>
+      <h3 class="panel-title">404</h3>
     </div>
     <div class="panel-body">
-      <p class="pull-left"><? echo  ($item['username']) ?></p>
-      <p class="pull-right"><? echo ($item['date_']) ?></p>
+
+      <p>
+        Sorry the page you are looking for could not be found.
+      </p>
+
     </div>
   </div>
-  <?php endforeach ?>
+
 </div>

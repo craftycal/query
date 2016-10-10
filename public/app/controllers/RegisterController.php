@@ -36,7 +36,7 @@ class RegisterController extends PageController{
       $data['passwordMessage'] = $this->passwordMessage;
     }
 
-    //Replace templateName with name of file
+
      echo $this->plates->render('register', $data);
 
   }

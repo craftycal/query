@@ -54,13 +54,25 @@
 <!-- question -->
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">question?</h3>
+        <h3 class="panel-title"><?= $question['title'] ?></h3>
       </div>
       <div class="panel-body">
-        <p>this is were the more detains go</p>
+        <p><?= $question['description'] ?></p>
       </div>
-      <div class="panel-body">
-        <p class="pull-right">00/00/00</p>
+
+      <?php if (isset($_SESSION['username']) && $_SESSION['username'] == $question['username']) {?>
+
+      <div class="panel-body" >
+        <div class="btn-group btn-group-sm" role="group" aria-label="...">
+          <button type="button" class="btn btn-default">edit</button>
+          <button type="button" class="btn btn-default">delete</button>
+        </div>
+
+      <?php } ?>
+
+        <div class="pull-right">
+          <p class="pull-right"><?= $question['date_'] ?></p>
+        </div>
       </div>
     </div>
 
@@ -80,10 +92,10 @@
               <p>Reply goes here</p>
             </div>
 
-            <div class="panel-body" >
-              <div class="btn-group btn-group-sm" role="group" aria-label="...">
-                <button type="button" class="btn btn-default">edit</button>
-                <button type="button" class="btn btn-default">delete</button>
+              <div class="panel-body" >
+                <div class="btn-group btn-group-sm" role="group" aria-label="...">
+                  <button type="button" class="btn btn-default">edit</button>
+                  <button type="button" class="btn btn-default">delete</button>
               </div>
 
               <div class="pull-right">
@@ -107,12 +119,19 @@
         <h3 class="panel-title">Your Answer</h3>
       </div>
       <div class="panel-body">
-        <form class="" action="index.html" method="post">
-          <textarea class="form-control" rows="5"></textarea>
+
+        <form action="index.php?page=question&question_id=<?= $item['question_id'] ?>" method="post">
+          <textarea class="form-control" name="comment" rows="5"></textarea>
+
+            <?php if( isset($commentMessage) ): ?>
+              <p><span class="glyphicon glyphicon-info-sign"></span> <?= $commentMessage ?> </p>
+            <?php endif ?>
+
           <div class="input-group">
-            <input type="submit" value="submit" class="btn btn-default" aria-describedby="basic-addon1">
+            <input type="submit" name="comment" value="submit" class="btn btn-default">
           </div>
         </form>
+
       </div>
     </div>
   </div>

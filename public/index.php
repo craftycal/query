@@ -29,14 +29,19 @@ switch ($page) {
 		$controller = new LandingController($dbc);
 	break;
 
+  case 'register':
+    require 'app/controllers/RegisterController.php';
+    $controller = new RegisterController($dbc);
+  break;
+
 	case 'login':
 		require 'app/controllers/LoginController.php';
 		$controller = new LoginController($dbc);
 	break;
 
-  case 'register':
-    require 'app/controllers/RegisterController.php';
-    $controller = new RegisterController($dbc);
+  case 'logout':
+    require 'app/controllers/LogoutController.php';
+    $controller = new LogoutController($dbc);
   break;
 
   case 'ask':
@@ -49,9 +54,9 @@ switch ($page) {
     $controller = new QuestionController($dbc);
   break;
 
-  case 'logout':
-    require 'app/controllers/LogoutController.php';
-    $controller = new LogoutController($dbc);
+  case 'error':
+    require 'app/controllers/errorController.php';
+    $controller = new errorController($dbc);
   break;
 
 }
