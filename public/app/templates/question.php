@@ -59,10 +59,12 @@
       <div class="panel-body">
         <p><?= $question['description'] ?></p>
       </div>
-
+      <div class="panel-body" >
+      <!-- display the Edit and Delete buttons only for the owner -->
+      <!-- need to add delete option for admin -->
+      <!-- currently breaks bootstrap -->
       <?php if (isset($_SESSION['username']) && $_SESSION['username'] == $question['username']) {?>
 
-      <div class="panel-body" >
         <div class="btn-group btn-group-sm" role="group" aria-label="...">
           <button type="button" class="btn btn-default">edit</button>
           <button type="button" class="btn btn-default">delete</button>
@@ -74,14 +76,12 @@
           <p class="pull-right"><?= $question['date_'] ?></p>
         </div>
       </div>
-    </div>
-
-<!-- question end -->
+    </div><!-- question end -->
 
 <!-- replys -->
     <div class="container">
 
-<!-- post -->
+<!-- need to add forloop to display all replys -->
       <div class="row">
         <div class="col-sm-11 pull-right">
           <div class="panel panel-default">
@@ -91,22 +91,28 @@
             <div class="panel-body">
               <p>Reply goes here</p>
             </div>
+            <div class="panel-body" >
 
-              <div class="panel-body" >
+            <!-- display the Edit and Delete buttons only for the owner -->
+            <!-- need to add delete option for admin -->
+            <!-- currently breaks bootstrap -->
+            <?php if (isset($_SESSION['username']) && $_SESSION['username'] == $question['username']) {?>
+
+
                 <div class="btn-group btn-group-sm" role="group" aria-label="...">
                   <button type="button" class="btn btn-default">edit</button>
                   <button type="button" class="btn btn-default">delete</button>
               </div>
+
+            <?php } ?>
 
               <div class="pull-right">
                 <p id="data">00/00/00</p>
               </div>
             </div>
           </div>
-          </div>
-
+        </div>
       </div>
-<!-- post end -->
 
     </div> <!-- end replys -->
 
