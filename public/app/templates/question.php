@@ -78,26 +78,27 @@
       </div>
     </div><!-- question end -->
 
-<!-- replys -->
-    <div class="container">
 
-<!-- need to add forloop to display all replys -->
+
+    <div class="container"><!-- replys -->
+
+<!-- foreach to display all replys -->
+    <?php foreach($replys as $relpy): ?>
       <div class="row">
         <div class="col-sm-11 pull-right">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h3 class="panel-title">Username</h3>
+              <h3 class="panel-title"><?= ($relpy['username']) ?></h3>
             </div>
             <div class="panel-body">
-              <p>Reply goes here</p>
+              <p><?= ($reply['reply']) ?></p>
             </div>
             <div class="panel-body" >
 
             <!-- display the Edit and Delete buttons only for the owner -->
             <!-- need to add delete option for admin -->
             <!-- currently breaks bootstrap -->
-            <?php if (isset($_SESSION['username']) && $_SESSION['username'] == $question['username']) {?>
-
+            <?php if (isset($_SESSION['username']) && $_SESSION['username'] == $reply['username']) {?>
 
                 <div class="btn-group btn-group-sm" role="group" aria-label="...">
                   <button type="button" class="btn btn-default">edit</button>
@@ -107,12 +108,13 @@
             <?php } ?>
 
               <div class="pull-right">
-                <p id="data">00/00/00</p>
+                <p id="data"><?= ($relpy['date_']) ?></p>
               </div>
             </div>
           </div>
         </div>
       </div>
+    <?php endforeach ?>
 
     </div> <!-- end replys -->
 

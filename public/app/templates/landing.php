@@ -40,6 +40,7 @@
                 <li><a href="?page=logout">logout</a></li>
               </ul>
             </li>
+
         <?php } else { ?>
           <li><a href="?page=login">login</a></li>
           <li><a href="?page=register">register</a></li>
@@ -61,8 +62,8 @@
       <a href="index.php?page=question&question_id=<?= $item['question_id'] ?>"><h3 class="panel-title"><? echo ($item['title']) ?></h3></a>
     </div>
     <div class="panel-body">
-      <p class="pull-left"><? echo  ($item['username']) ?></p>
-      <p class="pull-right"><? echo ($item['date_']) ?></p>
+      <p class="pull-left"><?= ($item['username']) ?></p>
+      <p class="pull-right"><?= ($item['date_']) ?></p>
     </div>
   </div>
   <?php endforeach ?>

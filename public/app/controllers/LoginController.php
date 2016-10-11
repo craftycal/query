@@ -81,7 +81,7 @@ class LoginController extends PageController{
       $totalErrors++;
     }
 
-    if ($password_found = true && $username_found = true ) {
+    if ($password_found == true && $username_found == true ) {
 
       $_SESSION['username'] = $username;
       $_SESSION['id'] = $userData['user_id'];

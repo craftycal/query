@@ -51,7 +51,6 @@ class QuestionController extends PageController{
       $this->data['question'] = $result->fetch_assoc();
     }
 
-    // still working on but have no replys to test so maybe okay?
     //  get the replys
     $sql = "SELECT replys.reply, replys.date_, userData.username  FROM replys INNER JOIN userData ON userData.user_id = replys.owner_id WHERE replys.qusetion_id = '$questionID'";
 
@@ -59,9 +58,7 @@ class QuestionController extends PageController{
     $result = $this->dbc->query($sql);
 
     // put the resulting data in to associative array
-    $this->data['allReplys'] = $result->fetch_all(MYSQLI_ASSOC);
-
-
+    $this->data['relpys'] = $result->fetch_assoc();
 
   }
 
@@ -77,6 +74,7 @@ class QuestionController extends PageController{
       $totalErrors++;
     }
 
+    // validate the reply
     if ( $_POST['comment'] == '' ) {
       $this->commentMessage = 'please enter your comment';
       $totalErrors++;
@@ -88,11 +86,12 @@ class QuestionController extends PageController{
       $totalErrors++;
     }
 
+    // escape and special characters
     $refineComment = $this->dbc->real_escape_string( $_POST['comment'] );
     $ownerID = $this->dbc->real_escape_string( $_SESSION['id'] );
     $questionID = $this->dbc->real_escape_string( $_GET['question_id'] );
 
-    // goes to 404 on submit, problem with the form action?     question.php - line 129
+    // goes to 404 on submit, problem with the form action?     question.php - line 129 maybe?
     if ($totalErrors == 0 ) {
 
       $sql = "INSERT INTO replys (owner_id, qusetion_id, reply) VALUES ('$ownerID', '$questionID', '$refineComment')";
