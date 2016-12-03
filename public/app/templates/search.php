@@ -1,9 +1,10 @@
 <?php
   $this->layout('master', [
-    'title'=>'welcome to query',
-    'desc'=>'login or register to get started'
+    'title'=>'search results',
+    'desc'=>'view all the results of your search'
   ]);
 ?>
+
 
 <nav class="navbar navbar-default">
   <div class="container-fluid">
@@ -21,9 +22,9 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <!-- search bar -->
-      <form class="navbar-form navbar-left" method="post" action="index.php?page=search&amp;searchTerm=<?=$_POST['searchTerm']?>" >
+      <form class="navbar-form navbar-left" method="post" action="search">
         <div class="form-group">
-          <input class="form-control" type="text" name="searchTerm" placeholder="Search">
+          <input type="text" class="form-control" placeholder="Search">
         </div>
         <button type="submit" name="submit" class="btn btn-default">search</button>
       </form>
@@ -55,7 +56,7 @@
 
 <div class="container">
 
- <?php foreach($allQuestions as $item): ?>
+ <?php foreach($filterQuestions as $item): ?>
 
   <div class="panel panel-default">
     <div class="panel-heading">

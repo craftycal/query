@@ -66,7 +66,7 @@
           <?php if( isset($usernameMessage) ): ?>
             <p><span class="glyphicon glyphicon-info-sign"></span> <?= $usernameMessage ?> </p>
           <?php endif ?>
-<br>  <!--  Email  -->
+<br> <!--  Email  -->
         <div class="input-group">
           <span class="input-group-addon" id="basic-addon">email</span>
           <input type="text" name="email" class="form-control" aria-describedby="basic-addon1" value="<?= isset($_POST['email']) ? $_POST['email'] : '' ?>">

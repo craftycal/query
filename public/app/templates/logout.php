@@ -1,4 +1,3 @@
-
 <?php
   $this->layout('master', [
     'title'=>'logout out of query',

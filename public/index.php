@@ -54,6 +54,11 @@ switch ($page) {
     $controller = new QuestionController($dbc);
   break;
 
+  case 'search':
+    require 'app/controllers/searchController.php';
+    $controller = new searchController($dbc);
+  break;
+
   case 'error':
     require 'app/controllers/errorController.php';
     $controller = new errorController($dbc);

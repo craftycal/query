@@ -78,18 +78,18 @@ class RegisterController extends PageController{
     $refineUsername = $this->dbc->real_escape_string( $_POST['username'] );
     $refineEmail = $this->dbc->real_escape_string( $_POST['email'] );
 
-    $sql = "SELECT username, email FROM userData WHERE '$refineEmail' = email OR '$refineUsername' = username";
+    $sql = "SELECT username, email FROM user_data WHERE '$refineEmail' = email OR '$refineUsername' = username";
     $result = $this->dbc->query($sql);
-    $userData = $result->fetch_assoc();
+    $user_data = $result->fetch_assoc();
 
     if( $result->num_rows > 0 ) {
 
-      if ($refineUsername == $userData['username']){
+      if ($refineUsername == $user_data['username']){
         $this->usernameMessage = 'sorry that username is already in uses';
         $totalErrors++;
       }
 
-      if ($refineEmail == $userData['email']){
+      if ($refineEmail == $user_data['email']){
         $this->emailMessage = 'sorry thet email address is already registered';
         $totalErrors++;
       }
@@ -99,7 +99,7 @@ class RegisterController extends PageController{
 
       $hash = password_hash( $_POST['password'], PASSWORD_BCRYPT );
 
-      $sql = "INSERT INTO userData (username, email, password) VALUES ('$refineUsername', '$refineEmail', '$hash')";
+      $sql = "INSERT INTO user_data (username, email, password) VALUES ('$refineUsername', '$refineEmail', '$hash')";
       $result = $this->dbc->query($sql);
 
       header('Location: ?page=landing');

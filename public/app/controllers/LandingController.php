@@ -24,7 +24,7 @@ class LandingController extends PageController{
   private function getQuestions(){
 
     // get the questions
-    $sql = "SELECT questions.question_id, questions.title, questions.date_, userData.username FROM questions INNER JOIN userData ON questions.owner_id=userData.user_id";
+    $sql = "SELECT questions.question_id, questions.title, questions.date_, user_data.username FROM questions INNER JOIN user_data ON questions.user_id=user_data.user_id";
       // get the sql result
       $result = mysqli_query($this->dbc, $sql);
       // store result as an array

@@ -63,9 +63,9 @@ class LoginController extends PageController{
     $username_found = false;
     $password_found = false;
 
-    $sql = "SELECT username, password, privilege, user_id FROM userData WHERE username = '$username' ";
+    $sql = "SELECT username, password, privilege, user_id FROM user_data WHERE username = '$username' ";
       $result = $this->dbc->query($sql);
-      $userData = $result->fetch_assoc();
+      $user_data = $result->fetch_assoc();
 
     if ( $result && $result->num_rows > 0 ) {
       $username_found = true;
@@ -74,7 +74,7 @@ class LoginController extends PageController{
       $totalErrors++;
     }
 
-    if ( password_verify ( $password, $userData['password'] ) ) {
+    if ( password_verify ( $password, $user_data['password'] ) ) {
       $password_found = true;
     } else {
       $this->loginMessage = 'username or Password incorrect';
@@ -84,8 +84,8 @@ class LoginController extends PageController{
     if ($password_found == true && $username_found == true ) {
 
       $_SESSION['username'] = $username;
-      $_SESSION['id'] = $userData['user_id'];
-      $_SESSION['privilege'] = $userData['privilege'];
+      $_SESSION['id'] = $user_data['user_id'];
+      $_SESSION['privilege'] = $user_data['privilege'];
       header('Location: ?page=landing');
 
     }

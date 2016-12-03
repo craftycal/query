@@ -83,7 +83,7 @@ class AskController extends PageController{
 
     if ( $totalErrors == 0 ){
 
-      $sql = "INSERT INTO questions (title, description, owner_id) VALUES ('$title', '$description', '$id')";
+      $sql = "INSERT INTO questions (user_id, title, description ) VALUES ('$id', '$title', '$description')";
       $result = $this->dbc->query($sql);
 
       header('Location: ?page=landing');
